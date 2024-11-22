@@ -43,9 +43,39 @@ public class BinaryTree {
 
 
   }
+  // // In order binary tree iterative traversal
+  // public void inOrderStackTreeTraversal(TreeNode root){
+  //   Stack<TreeNode> inOrderNodeStack = new Stack<>();
+  //   inOrderNodeStack.push(root);
+  //   while(inOrderNodeStack.size() != 0){
+  //     TreeNode currNode = inOrderNodeStack.pop();
 
-  // Using recursion
-  public void preOrderTreeTraversal(TreeNode root){
+  //     if(currNode.right != null){
+  //       inOrderNodeStack.push(currNode.right);
+  //     }
+      
+  //     if(currNode.left != null){
+  //       inOrderNodeStack.push(currNode.left);
+  //     }
+
+  //     System.out.print(currNode.data + " "); //Printing out the node value after the left node but before the right node
+  //   }
+  // }
+
+  // In order binary tree recursive traversal
+  public void inOrderRecursiveTraversal(TreeNode root){
+    if(root == null){
+      return;
+    }
+    
+    inOrderRecursiveTraversal(root.left);
+    System.out.println(root.data);
+    inOrderRecursiveTraversal(root.right);
+    
+  }
+
+  // Pre order traversal Using recursion
+  public void preOrderTreeTraversal(TreeNode root){ // recursive traversal
     if(root == null){
       return;
     }
@@ -59,7 +89,7 @@ public class BinaryTree {
    * What goes in first comes out last. So, in each push to the stack, start with the right node because it must be processed
    * last in preOrder traversal
    */
-  public void preOrderStackTreeTraversal(TreeNode root){
+  public void preOrderStackTreeTraversal(TreeNode root){ // iterative traversal
     if(root == null){
       return;
     }
@@ -102,13 +132,19 @@ public class BinaryTree {
     System.out.println("Creating binary tree...");
     binaryTree.createBinaryTree();
     
-    System.out.println("PreOrder tree traversal using recursion");
-    binaryTree.preOrderTreeTraversal(binaryTree.root);
+    // System.out.println("PreOrder tree traversal using recursion");
+    // binaryTree.preOrderTreeTraversal(binaryTree.root);
 
-    System.out.println("\nIterative PreOrder tree traversal using a stack data structure");
-    binaryTree.preOrderStackTreeTraversal(binaryTree.root);
+    // System.out.println("\nIterative PreOrder tree traversal using a stack data structure");
+    // binaryTree.preOrderStackTreeTraversal(binaryTree.root);
     
-    System.out.println("\nBreadth first tree traversal iteratively using a queue");    
-    binaryTree.breadthFirstTraversal(binaryTree.root);
+    // System.out.println("\nBreadth first tree traversal iteratively using a queue");    
+    // binaryTree.breadthFirstTraversal(binaryTree.root);
+
+    // System.out.println("\nIn Order tree traversal iteratively using a stack");    
+    // binaryTree.inOrderStackTreeTraversal(binaryTree.root);
+
+    System.out.println("\nIn Order tree traversal recursively");    
+    binaryTree.inOrderRecursiveTraversal(binaryTree.root);
   }
 }
